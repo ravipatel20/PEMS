@@ -1,0 +1,114 @@
+<div ng-controller="passCtrl as t">
+    <table class="disptable" id="displaytable" >
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>Phone</th>
+            <th>Start Date</th>
+            <th>Property Access</th>
+            <th>Social Security No.</th>
+        </tr>
+        <tr ng-repeat="x in result" ng-dblclick="t.editbox(x)">
+            <td>{{x.Id}}</td>
+            <td>{{x.Fname + " " + x.Lname}}</td>
+            <td>{{x.Street1}}</td>
+            <td>{{x.City}}</td>
+            <td>{{x.Phone_1}}</td>
+            <td>{{x.Start}}</td>
+            <td>{{x.Access}}</td>
+            <td>{{x.Ssn}}</td>
+        </tr>
+    </table>
+
+    <!----------------------------Edit Form -------------------------------->
+
+    <div style="display:none; overflow: auto; margin: 20px; padding: 10px;" ng-style="t.disp">
+        <form  method="post" action="Employee/data/addemployee.php">
+            <table class="disptable" style="background-color: rgb(240,240,240); width: 40%;">
+                <tr>
+                    <th colspan="2"><h3><u>Employee ID</u> : <span ng-model="t.id">{{t.id}}</span></h3></th>
+                </tr>
+                <tr>
+                    <td>Name :</td>
+                    <td><input name="fname" type="text" ng-model="t.fname"></td>
+                </tr>                        
+                <tr>
+                    <td>Middle Name :</td>
+                    <td><input name="mname" type="text" ng-model="t.mname"></td>
+                </tr>                        
+                <tr>
+                    <td>Last Name :</td>
+                    <td><input name="lname" type="text" ng-model="t.lname"></td>
+                </tr>                        
+                <tr>
+                    <td>Password :</td>
+                    <td><input name="pwd" type="password" ng-model="t.pass"></td>
+                </tr>
+                <tr>
+                    <td>Address :</td>
+                    <td><input name="street1" type="text" ng-model="t.street1"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input name="street2" type="text" ng-model="t.street2"></td>
+                </tr>
+                <tr>
+                    <td>City :</td>
+                    <td><input name="city" type="text" ng-model="t.city"></td>
+                </tr>
+                <tr>
+                    <td>State :</td>
+                    <td><input name="state" type="text" ng-model="t.state"></td>
+                </tr>
+                <tr>
+                    <td>Zip :</td>
+                    <td><input name="zip" type="text" ng-model="t.zip"></td>
+                </tr>
+                <tr>
+                    <td>Phone :</td>
+                    <td><input name="phone" type="text" ng-model="t.phone_1"></td>
+                </tr>
+                <tr>
+                    <td>Alt-Phone :</td>
+                    <td><input name="altphone" type="text" ng-model="t.phone_2"></td>
+                </tr>
+                <tr>
+                    <td>Start Date :</td>
+                    <td><input disabled type="text" ng-model="t.st_date"></td>
+                </tr>
+                <tr>
+                    <td>Status :</td>
+                    <td>
+                        <select name="status" ng-model="t.status" style="width: 148px;" ng-change="t.calenddate(t.status)">
+                            <option value="Inactive">Inactive</option>
+                            <option value="Active">Active</option>                  
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Property Access :</td> 
+                    <td><input name="paccess" type="text" ng-model="t.access"></td>
+                </tr>
+                <tr>
+                    <td>SSN :</td>
+                    <td><input name="ssn" type="text" ng-model="t.ssn"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+
+                    <!---------------Hidden Parameters being passed------------->
+
+                        <input name="flag" style="display: none" value="1">                                
+                        <input name="userid" style="display: none" ng-model="t.id">
+                        <input name="startdate" style="display: none;" type="text" ng-model="t.st_date">                                
+                        <input name="enddate" style="display: none;" type="text" ng-model="t.end_date">
+
+                        <button type="submit" style="margin: 10px auto 8px; width: 150px;">Submit</button> 
+                    </td>               
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>

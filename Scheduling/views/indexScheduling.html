@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" type="text/css" href="../../pems.css">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu:700" rel="stylesheet">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    </head>
+    <body ng-app="schedulingApp">
+        <div style="overflow: auto; margin: 20px auto; padding: 10px; width: 40%;" ng-controller="editSchedule as sch">
+            <table class="disptable" style="background-color: rgb(240,240,240);">
+                <tr>
+                    <th colspan="3" style="padding: 20px;">
+                        Name : 
+                        <select name="employees" style="width: max-content;">
+                            <option ng-repeat="x in sch.emplist" value="{{x.Fname}}" ng-model="sch.x.Id">{{x.Fname}}  ( {{x.Id}} )</option>                  
+                        </select>
+                    </th>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align: center">
+                        From Date : 
+                        <input name="start_date" type="date" min="{{sch.today}}" ng-model="sch.start_date">                        
+                        Till Date : 
+                        <input name="end_date" type="date" min="{{sch.today}}" ng-model="sch.end_date">
+                    </td>
+                </tr>                        
+                <tr>
+                    <td></td>
+                    <td>Start Time</td>
+                    <td>End Time</td>
+                </tr>                        
+                <tr ng-repeat="x in [0,1,2,3,4,5,6]">
+                    <td>{{sch.get_day(x)}} ({{sch.get_date(x)}})</td>
+                    <td><input name="monday_start_time" type="time" ng-model="monday_start_time"></td>
+                    <td><input name="monday_end_time" type="time" ng-model="monday_end_time"></td>
+                </tr>                                       
+                                        
+                <tr>
+                    <td colspan="3">
+
+                    <!---------------Hidden Parameters being passed------------->
+
+                        <input name="flag" style="display: none" value="1">                                
+                        <input name="userid" style="display: none" ng-model="t.id">
+                        <input name="startdate" style="display: none;" type="text" ng-model="t.st_date">                                
+                        <input name="enddate" style="display: none;" type="text" ng-model="t.end_date">                                
+                        <input name="prevStatus" style="display: none;" type="text" ng-model="t.prevstatus">
+
+                        <div style="margin: 10px auto 8px; width: max-content;">
+                            <button type="submit" style="margin: 10px; width: 150px; display: inline-block;">Submit</button>
+                            <button type="button" style="margin: 10px; width: 150px; display: inline-block;" ng-click="t.cancelbtn()">Cancel</button>
+                        </div>
+                    </td>               
+                </tr>
+            </table>
+        </div>
+        
+        <script src="../controllers/schedulingApp.js"></script>
+        <script src="../controllers/editSchedule.js"></script>
+        
+        <script src="/PEMS/Employee/controllers/empService.js"></script>
+        <script src="/PEMS/Employee/controllers/tabcontrol.js"></script>
+        <script src="/PEMS/Employee/controllers/tablecontrol.js"></script>
+        <script src="/PEMS/Employee/controllers/editcontrol.js"></script>
+        <script src="/PEMS/Employee/controllers/newempcontrol.js"></script>
+        
+        <!--<script src="pems.js"></script>-->
+        
+    </body>
+</html>

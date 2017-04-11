@@ -1,0 +1,26 @@
+<div ng-controller="tablecontrol as t">
+    <table class="disptable" id="displaytable" >
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>Phone</th>
+            <th>Start Date</th>
+            <th>Property Access</th>
+            <th>Social Security No.</th>
+        </tr>
+        <tr ng-repeat="x in result" ng-dblclick="t.editbox(x)">
+            <td>{{x.Id}}</td>
+            <td>{{x.Fname + " " + x.Lname}}</td>
+            <td>{{x.Street1}}</td>
+            <td>{{x.City}}</td>
+            <td>{{x.Phone_1}}</td>
+            <td>{{x.Start}}</td>
+            <td>{{x.Access}}</td>
+            <td>{{x.Ssn}}</td>
+        </tr>
+    </table>
+    
+    <div ui-view ng-cloak autoscroll="false"></div>
+</div>

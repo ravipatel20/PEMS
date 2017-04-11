@@ -1,0 +1,11 @@
+
+<div style="width:70%; overflow-x:auto; margin: 2em auto; padding: 10px;">
+
+    <div style="margin: 0px; padding: 0px; overflow: auto;" ng-controller="tabscontrol as t">
+        <a class="tab" ui-sref=".active" ng-click="t.updatetab('active')" ng-style="t.tab1">Active Employees</a>
+        <a class="tab" ui-sref=".inactive"ng-click="t.updatetab('inactive')" ng-style="t.tab2">Inactive Employees</a>                    
+        <a class="tab" ui-sref=".newEmp" ng-click="t.updatetab('addemp')" ng-style="t.tab3">Add Employees</a>
+    </div>
+
+    <div ui-view ng-cloak autoscroll="false"></div>
+</div>

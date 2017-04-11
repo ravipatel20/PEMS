@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div style="width:80%;" ng-controller="newempcontrol as t">
+    <form  method="post" action="Employee/data/addemployee.php" name="myForm">
+        <table class="disptable" style="background-color: rgb(240,240,240); padding: 100px;">
+            <tr>
+                <th colspan="4" id="newth"><h3>Add Employee</h3></th>
+            </tr>                        
+                       
+            <tr>                            
+                <td>Start Date:<sup>*</sup></td>
+                <td>
+                    <input type="date" name="startdate" style="width : 150px;" ng-blur="t.chckdate()" ng-model="t.newst_date" required>
+                    <span class="textboxlabel" ng-show="t.st_date_disp">{{t.msg_st_date}}</span>
+                </td>
+                
+                <td class="righttdborder">User Id:<sup>*</sup></td>
+                <td>
+                    <input name="userid" ng-model="t.newid" ng-blur="t.chckuserid()" required>
+                    <span class="textboxlabel" ng-show="t.userid_disp">{{t.msg_userid}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Password:<sup>*</sup></td>
+                <td><input name="pwd" type="password" ng-model="t.newpass" required></td>
+                <td style="border-left: 2.5px solid white">Confirm Password:<sup>*</sup></td>
+                <td>
+                    <input type="password" ng-model="t.newcpass" required ng-change="t.confirmpass()">
+                    <span class="textboxlabel">{{t.msgpass}}</span>
+                </td>
+            </tr>                        
+            <tr>                            
+                <td>Name:<sup>*</sup></td>
+                <td><input name="fname" type="text" ng-model="t.newfname" required></td>
+                <td style="border-left: 2.5px solid white">Middle Name:</td>
+                <td><input name="mname" type="text" ng-model="t.newmname"></td>
+            </tr>                        
+            <tr>                                                        
+                <td>Last Name:<sup>*</sup></td>
+                <td><input name="lname" type="text" ng-model="t.newlname" required></td>
+                <td style="border-left: 2.5px solid white">Property Access:<sup>*</sup></td>
+                <td>
+                    <select name="paccess" ng-model="t.newaccess" required>
+                        <option value=""></option>
+                        <option value="Front Desk">Front Desk</option>
+                        <option value="Manager">Manager</option>
+                    </select>
+                </td>                                                        
+            </tr>                        
+            <tr>
+                <td>Address:<sup>*</sup></td>
+                <td><input name="street1" type="text" ng-model="t.newstreet1" required placeholder="Line 1"></td>
+                <td  style="border-left: 2.5px solid white"></td>
+                <td><input name="street2" type="text" ng-model="t.newstreet2" placeholder="Line 2"></td>                            
+            </tr>
+            <tr>                            
+                <td>City:<sup>*</sup></td>
+                <td><input name="city" type="text" ng-model="t.newcity" required></td>
+                <td style="border-left: 2.5px solid white">Zip:<sup>*</sup></td>
+                <td><input name="zip" type="text" ng-model="t.zip" required></td>                            
+            </tr>
+            <tr>                            
+                <td>State:<sup>*</sup></td>
+                <td><input name="state" type="text" ng-model="t.newstate" required></td>
+                <td style="border-left: 2.5px solid white">SSN:<sup>*</sup></td>
+                <td><input name="ssn" type="text" ng-model="t.newssn" required></td>
+            </tr>
+            <tr>
+                <td>Phone:<sup>*</sup></td>
+                <td><input name="phone" type="text" ng-model="t.newphone_1" required></td>
+                <td style="border-left: 2.5px solid white">Alt-Phone:</td>
+                <td><input name="altphone" type="text" ng-model="t.newphone_2"></td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <!---------------Hidden Parameters being passed------------->                                
+                    <input name="flag" style="display: none" value="3">      
+                    <input name="enddate" value="" style="display: none;" type="text" ng-model="t.newend_date">
+                    <input name="status" value="Active" style="display: none;" type="text">
+                    <button type="submit" style="margin: 10px auto 8px; width: 150px;">Submit</button>
+                    <span class="textboxlabel" style="float: right"><b><i>Fields marked in red(*) are required</i></b></span>
+                </td>               
+            </tr>
+        </table>
+    </form>
+</div>
